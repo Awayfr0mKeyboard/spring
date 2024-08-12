@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- 
+		Project Object Model 	pom.xml
+		프로젝트의 구조와 내용을 설명하고
+		pom.xml 파일에 프로젝트 관리 및 빌드에 필요한 환경설정, 의존성 관리 등의
+		정보들을 기술
+		
+		Maven build goals
+		Maven 이 행할 수 있는 여러가지 동작을 수행하는 명령을 Goals라고 함
+		실행 방식, 체인 형태로 실행 가능
+		
+		clean : 컴파일 결과물인 target 디렉토리 정리
+		compile : 모든 소스코드 컴파일, 리소스 파일을 target/classes 디렉토리에 복사
+		package : compile 수행 후, 테스트 수행, <packaging> 정보에 따라 패키징 수행
+		install : package 수행 후, local repository 에 install 수행
+		deploy : install 수행 후, 배포 수행, 여기서 배포는 로컬 repository
+		
+	 -->
+	<modelVersion>4.0.0</modelVersion>
+	<!-- 프로젝트 그룹 id -->
+	<groupId>com.bitc</groupId>
+	<!-- 전체 프로젝트에서 현재 프로젝트를 구분하는 id == contextPath -->
+	<artifactId>first</artifactId>
+	<!-- 실제 프로젝트 이름 -->
+	<name>mvc_01_first</name>
+	<!-- Maven 배포(빌드) 시 형태 지정 jar, war -->
+	<packaging>war</packaging>
+	<!-- 프로젝트의 현재 version, 프로젝트 개발 중 - snapshot -->
+	<!-- 버전의 큰 변경이 없는 배포 상태 - release -->
+	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<!-- 
+		속성 - 
+		project 태그 내부에서 반복적으로 사용되는 값을 변수로 지정하여 사용
+	 -->
+	<properties>
+		<!-- 태그 이름이 key, 태그 본문이 value -->
+		<java-version>11</java-version>
+		<org.springframework-version>5.3.37</org.springframework-version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+	</properties>
+	
+	<!-- 
+		dependencies(의존성) - 무언가를 사용 또는 실행하기 위해 필수적으로 필요한 것
+	 -->
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				 </exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- 
+			spring-webmvc 는
+			spring-web, spring-aop, spring-benas, spring-expression,
+			에 대해 의존성이 존재하므로, 이 의존 라이브러리들이 자동으로 포함 됨
+		 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+				
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>	
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+				
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+	
+		<!-- Test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    <version>8.0.33</version>
+		</dependency>
+		<!-- 
+			dependency scope
+			1. compile - scope 속성이 없으면 기본값 (default)
+			   컴파일 단계에서 필요한 라이브러리 프로젝트의 모든 클래스에서 사용 가능
+			   
+			2. runtime - 프로젝트 동작 시에 필요한 라이브러리
+			   컴파일 할 때는 필요가 없지만 실행할 때 필요한 라이브러리
+			   클래스 파일 컴파일 시에는 필요하지 않지만 실행 시에는 필요한 라이브러리
+			   Mysql-connector 같은 프로그램 동작 시에 메모리에 올라가야 할 프로젝트
+			   
+			3. provided
+			   컴파일 할 때 필요하지만 런타임 때는 JDK 또는 컨테이너(WAS)가 제공하는 것
+			   Servlet 이나 JSP 관련 API는 Server lib 에 등록되어 있으므로
+			   배포 시에 프로젝트에 포함할 필요가 없음.
+			   운영 환경에서 중복으로 오류 발생 위험.
+			   
+			4. test
+			   코드 컴파일 할 때 필요하지만 배포때는 제외
+			   Junit 같이 개발 단계에서 테스트용으로 필요하지만 배포 시에는 필요없는 테스트 라이브러리를 의미.
+		 -->
+
+	</dependencies>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <additionalProjectnatures>
+                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+                    </additionalProjectnatures>
+                    <additionalBuildcommands>
+                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+                    </additionalBuildcommands>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <mainClass>org.test.int1.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
