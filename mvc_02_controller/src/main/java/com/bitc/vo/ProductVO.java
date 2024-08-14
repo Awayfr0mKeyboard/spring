@@ -9,6 +9,12 @@ public class ProductVO {
 	public ProductVO() {
 		System.out.println("Product 기본 생성자 호출");
 	}
+	
+	public ProductVO(int num, String name, int price) {
+		this.num = num;
+		this.name = name;
+		this.price = price;
+	}
 
 	public int getNum() {
 		return num;

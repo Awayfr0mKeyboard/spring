@@ -4,9 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bitc.vo.ProductVO;
 
@@ -60,6 +63,42 @@ public class SampleController {
 	
 	@RequestMapping(value="doH", method = RequestMethod.POST)
 	public String doH(Model model, ProductVO product) {
+		// key 값이 생략되면 class 이름이 key 값으로 등록
+		// class 명과 구분하기 위하여 첫 글자만 소문자로 변경
+		model.addAttribute(product); // ("productVO", product)
 		return "result";
 	}
+	
+	// Get 방식으로 product 요청 시 처리
+	@GetMapping("product")
+	public ModelAndView product() {
+		ModelAndView mav = new ModelAndView();
+		ProductVO product = new ProductVO();
+		product.setNum(1);
+		product.setName("TV");
+		product.setPrice(2500000);
+		
+		mav.addObject("product", product);
+		
+		// view 이름 지정
+		mav.setViewName("product");
+		// /WEB-INF/views/product.jsp
+		return mav;
+	}
+	
+	// Post 방식으로 product 요청 처리
+	@PostMapping("product")
+	public ModelAndView product(int num, String name, int price, ModelAndView mav, ProductVO vo) {
+		mav.addObject("product", vo);
+		// productVO
+		mav.addObject(new ProductVO(num, name, price));
+		mav.setViewName("product");
+		return mav;
+	}
+	
+	@GetMapping("redirect")
+	public String redirect() {
+		return "redirect:main.home";
+	}
+	
 }

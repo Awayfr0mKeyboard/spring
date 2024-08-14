@@ -33,5 +33,22 @@
 	<input type="submit" value="전송" />
 </form>
 
+<hr/>
+
+<a href="product">product</a>
+
+<hr/>
+
+<form action="product" method="POST">
+	번호 <input type="number" name="num" required /> <br/>
+	이름 <input type="text" name="name" required /> <br/>
+	가격 <input type="number" name="price" required /> <br/>
+	<button>전송</button>
+</form>
+
+<hr/>
+
+<a href="redirect">redirect home</a>
+
 </body>
 </html>
