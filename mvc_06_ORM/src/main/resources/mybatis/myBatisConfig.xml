@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- classpath:mybatis/MyBatisConfig.xml -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//OTD config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	
+	<mappers>
+		<mapper resource="mybatis/sql/memberMapper.xml" />
+		<mapper resource="mybatis/sql/boardMapper.xml" />
+	</mappers>
+	
+</configuration>
