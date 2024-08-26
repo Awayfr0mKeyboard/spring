@@ -2,16 +2,19 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="boardMapper">
+<mapper namespace="com.bitc.board.dao.BoardDAO">
 	
 	<!-- INSERT, SELECT, UPDATE, DELETE -->
 	<!-- CREATE  READ    UPDATE  DELETE -->
 	
 	<!-- 게시글 등록 -->
-	<insert id="create" parameterType="com.bitc.board.vo.BoardVO">
+	<!-- "com.bitc.board.vo.BoardVO" -->
+	<!-- 
+	<insert id="create" parameterType="boardVO">
 		INSERT INTO tbl_board(title, content, writer)
 		VALUES(#{title}, #{content}, #{writer})
-	</insert>
+	</insert> 
+	-->
 	
 	<!-- 게시글 상세보기 -->
 	<select id="read" parameterType="int" resultType="boardVO">
@@ -50,9 +53,9 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<!-- 
 		페이징 처리된 게시글 목록을 List<BoardVO> type으로 반환
 		페이징 처리된 목록을 검색하기 위하여 Criteria type으로 매개변수 전달
+		"com.bitc.common.util.Criteria"
 	 -->
-	<select id="listCriteria" parameterType="com.bitc.common.util.Criteria" 
-			resultType="boardVO" >
+	<select id="listCriteria" parameterType="criteria" resultType="boardVO" >
 		SELECT * FROM tbl_board ORDER BY bno DESC 
 		LIMIT #{startRow}, #{perPageNum}
 	</select>

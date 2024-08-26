@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>REGISTER BOARD</h1>
+	<!-- board/register -->
 	<form method="POST">
 		<div>
 			<label>TITLE</label>

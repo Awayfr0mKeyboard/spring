@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>listPage.jsp</title>
+<script>
+	let msg = "${msg}";
+	if (msg != '') alert(msg);
+</script>
 </head>
 <body>
 	<!-- model : list, pm -->
