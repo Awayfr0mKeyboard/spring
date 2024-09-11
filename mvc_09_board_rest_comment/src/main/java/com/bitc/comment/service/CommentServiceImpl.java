@@ -20,19 +20,18 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public String addComment(CommentVO vo) throws Exception {
 		int result = dao.add(vo);
-		return result == 1 ? "삽입성공" : "삽입실패";
+		return result == 1 ? "등록성공" : "등록실패";
 	}
 
 	@Override
 	public List<CommentVO> commentList(int bno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.commentList(bno);
 	}
 
 	@Override
 	public String updateComment(CommentVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		int result = dao.update(vo);
+		return result > 0 ? "SUCCESS" : "FAILED";
 	}
 
 	@Override
