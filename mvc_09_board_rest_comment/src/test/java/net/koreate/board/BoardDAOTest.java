@@ -39,7 +39,7 @@ public class BoardDAOTest {
 	}
 	
 	@Test
-	public void update() throws Exception {
+	public void update() throws Exception{
 		BoardVO board = new BoardVO();
 		board.setBno(1);
 		board.setTitle("ㄱㄷㅎ 수정");
@@ -59,7 +59,8 @@ public class BoardDAOTest {
 		System.out.println("삭제된 게시글 개수 : " + result);
 		
 		int totalCount = dao.totalCount();
-		System.out.println("남아있는 전체 게시글 개수 : " + totalCount);
+		System.out.println("남아 있는 전체 게시글 개수 : " + totalCount);
+		
 	}
 	
 	@After
@@ -70,3 +71,18 @@ public class BoardDAOTest {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,14 +41,13 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
+		</dependency>
 		
-		<!-- aop -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjtools</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>
+		</dependency>	
 		
 		<!-- Logging -->
 		<dependency>
@@ -191,7 +190,7 @@
 		<!-- 
 			JACKSON
 			Java Object <-> JavaScript Object Notation
-		 -->
+		-->
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>

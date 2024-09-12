@@ -22,6 +22,7 @@ public interface CommentService {
 	 */
 	List<CommentVO> commentList(int bno) throws Exception;
 	
+	
 	/**
 	 * @apiNote - 댓글 수정
 	 * @param vo - 댓글 수정에 필요한 파라미터 정보
@@ -38,9 +39,16 @@ public interface CommentService {
 	
 	/**
 	 * @apiNote - 댓글 페이징 처리에 필요한 데이터
-	 * @param cri - 요청 page, 한 번에 보여줄 게시글 개수, 시작 인덱스 번호
+	 * @param cri - 요청 page, 한번에보여줄 게시글 개수, 시작인덱스 번호
 	 * @param bno - paging 처리된 리스트 목록을 출력할 게시글 번호
-	 * @return - List<CommentVO>, PageMaker
+	 * @return - List<CommentVO> , PageMaker
 	 */
-	Map<String, Object> commentPage(Criteria cri, int bno) throws Exception;
+	Map<String, Object> commentPage(Criteria cri, int bno)throws Exception;
 }
+
+
+
+
+
+
+

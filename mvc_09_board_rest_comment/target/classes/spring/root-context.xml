@@ -20,12 +20,17 @@
 	</bean>	
 
 	<bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="ds" />
+		<property name="dataSource" ref="ds"/>
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.bitc.*.dao" />
+	<mybatis-spring:scan base-package="com.bitc.*.dao"/>
 	
 </beans>
+
+
+
+
+
 
 
 

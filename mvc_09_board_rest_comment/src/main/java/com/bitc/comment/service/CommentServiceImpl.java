@@ -1,5 +1,6 @@
 package com.bitc.comment.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bitc.comment.dao.CommentDAO;
 import com.bitc.comment.vo.CommentVO;
 import com.bitc.common.util.Criteria;
+import com.bitc.common.util.PageMaker;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,14 +38,35 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public String deleteComment(int cno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.delete(cno) == 1 ? "SUCCESS" : "FAILED";
 	}
 
 	@Override
 	public Map<String, Object> commentPage(Criteria cri, int bno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("bno", bno);
+		paramMap.put("cri", cri);
+		List<CommentVO> list = dao.listPage(paramMap);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("list", list);
+		
+		PageMaker pm = new PageMaker();
+		pm.setCri(cri);
+		int totalCount = dao.totalCount(bno);
+		pm.setTotalCount(totalCount);
+		map.put("pm", pm);
+		
+		return map;
 	}
 
 }
+
+
+
+
+
+
+
+
+

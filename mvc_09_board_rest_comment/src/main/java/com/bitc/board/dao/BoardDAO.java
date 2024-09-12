@@ -18,8 +18,8 @@ public interface BoardDAO {
 	 * @param BoardVO db에 등록할 게시글 정보
 	 * @return 등록된 게시글 개수를 수로 반환
 	 */
-	@Insert("INSERT INTO tbl_board(title, content, writer) "
-			+ " VALUES(#{title}, #{content}, #{writer})")
+	@Insert("INSERT INTO tbl_board(title,content,writer) "
+			+ "	VALUES(#{title}, #{content}, #{writer})")
 	int create(BoardVO vo) throws Exception;
 
 	/**
@@ -38,8 +38,8 @@ public interface BoardDAO {
 	 * @return - 수정된 게시글 개수를 정수로 반환
 	 */
 	@Update("UPDATE tbl_board SET "
-			+ " title = #{title}, content = #{content}, writer = #{wirter} "
-			+ " WHERE bno = bno")
+			+ " title = #{title}, content = #{content}, writer = #{writer} "
+			+ " WHERE bno = #{bno}")
 	int update(BoardVO vo) throws Exception;
 
 	/**
@@ -81,7 +81,22 @@ public interface BoardDAO {
 	 * @param cri - 페이징 된 게시글 목록을 조회할 정보
 	 * @return - 조회된 게시글 목록
 	 */
-	@Select("SELECT * FROM tbl_board ORDER BY bno DESC LIMIT #{startRow}, #{perPageNum}")
+	@Select("SELECT * FROM tbl_board ORDER BY bno DESC limit #{startRow}, #{perPageNum}")
 	List<BoardVO> listCriteria(Criteria cri) throws Exception;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

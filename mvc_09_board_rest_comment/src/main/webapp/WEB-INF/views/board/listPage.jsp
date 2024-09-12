@@ -9,7 +9,7 @@
 <title>listPage.jsp</title>
 <script>
 	let msg = "${msg}";
-	if (msg != '') alert(msg);
+	if(msg != '') alert(msg);
 </script>
 </head>
 <body>

@@ -13,10 +13,10 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService {
-
-	private final BoardDAO dao;
+public class BoardServiceImpl implements BoardService{
 	
+	private final BoardDAO dao;
+
 	@Override
 	public String regist(BoardVO board) throws Exception {
 		int result = dao.create(board);
@@ -60,8 +60,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public PageMaker getPageMaker(Criteria cri) throws Exception {
 		int totalCount = dao.totalCount();
-		PageMaker pm = new PageMaker(cri, totalCount); 
+		PageMaker pm = new PageMaker(cri, totalCount);
 		return pm;
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+

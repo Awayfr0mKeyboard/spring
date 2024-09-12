@@ -13,13 +13,13 @@ import com.bitc.board.vo.BoardVO;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/root-context.xml"})
 public class MyBatisTest {
-	
+
 	@Autowired
 	SqlSession session;
 	
 	@Before
 	public void sessionTest() {
-		System.out.println("session : " + session);
+		System.out.println("session : "+session);
 	}
 	
 	@Test
@@ -29,7 +29,22 @@ public class MyBatisTest {
 		board.setContent("제곧내");
 		board.setWriter("김지연");
 		
-		int result = session.insert("boardMapper.create", board);
-		System.out.println("insert result : " + result);
+		int result = session.insert("boardMapper.create",board);
+		System.out.println("insert result : " +result);
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
