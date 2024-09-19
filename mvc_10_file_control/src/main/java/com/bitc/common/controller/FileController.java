@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.bitc.common.dto.FileDTO;
 import com.bitc.common.utils.FileUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -124,6 +125,17 @@ public class FileController {
 		return "uploadResult";
 	}
 	
+	/**
+	 MultipartFile profile,
+	 List<MultipartFile> files,
+	 String auth,
+	 String content,
+	 */
+	@PostMapping("uploadDTO")
+	public String uploadDTO(FileDTO dto, Model model) throws Exception {
+		System.out.println(dto);
+		return "uploadResult";
+	}
 	
 	
 	@GetMapping("downloadFile")

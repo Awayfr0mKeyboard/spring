@@ -27,4 +27,6 @@
 		<beans:constructor-arg value="C:\\Temp\\upload" />
 	</beans:bean>
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+	
 </beans:beans>

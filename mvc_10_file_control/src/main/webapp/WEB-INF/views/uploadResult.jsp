@@ -25,7 +25,7 @@
 			<h4>${name}</h4>
 			<c:set var="origin" value="${fn:substringAfter(name, '_')}" />
 			<h4>${origin}</h4>
-			<h4><a download=${origin} href="downloadFile?fileName=${name}">${origin}</a></h4>
+			<h4><a download="${origin}" href="downloadFile?fileName=${name}">${origin}</a></h4>
 			<h4><a href="downloadFile?fileName=${name}">${origin}</a></h4>
 		</c:forEach>
 	</c:if>

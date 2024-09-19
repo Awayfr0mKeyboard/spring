@@ -18,6 +18,8 @@ public class HomeController {
 		return "uploadForm";
 	}
 	
+	@GetMapping("uploadAjax")
+	public void uploadAjax() {}
 }
 
 

@@ -10,5 +10,6 @@
 	<h1>FILE Control HOME</h1>
 	
 	<h2><a href="uploadForm">Form Data</a></h2>
+	<h2><a href="uploadAjax">Upload Ajax</a></h2>
 </body>
 </html>
