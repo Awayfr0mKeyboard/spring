@@ -26,6 +26,7 @@
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>com.bitc.common.listener.MySessionEventListener</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
@@ -34,7 +35,11 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:/spring/appServlet/servlet-context.xml</param-value>
+			<param-value>
+				classpath:/spring/appServlet/servlet-context.xml
+				classpath:/spring/appServlet/interceptor-context.xml
+				classpath:/spring/appServlet/web-socket-context.xml
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

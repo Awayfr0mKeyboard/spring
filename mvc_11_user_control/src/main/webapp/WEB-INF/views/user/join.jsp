@@ -80,7 +80,7 @@
 			<td>주소</td>
 			<td>
 				<div>
-					<input type="text" readonly name="u_post" id="u_post" class="addr" placeholder="우편번호"/>
+					<input type="text" readonly name="u_addr_post" id="u_post" class="addr" placeholder="우편번호"/>
 					<input type="button" id="findAddr" value="주소찾기" />
 				</div>
 				<input type="text" readonly name="u_addr" id="u_addr" class="addr" placeholder="주소"/>
@@ -122,48 +122,46 @@
 	</table>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
-		$("#findAddr").click(function () {			
+		$("#findAddr").click(function(){
 		    new daum.Postcode({
 		        oncomplete: function(data) {
-		            
 		            console.log(data);
 		            
-		            var fullAddr = "";		// 최종 주소
-		            var extraAddr = "";		// 조합형 주소
-		            var postCode = "";		// 우편번호
-		            
-		            if(data.userSelectedType == 'R') {
+		            var fullAddr = "";			// 최종 주소
+		            var extraAddr = "";			// 조합형 주소
+		            var postCode = "";			// 우편번호
+					
+		            if(data.userSelectedType == 'R'){
 		            	// 도로명 주소
 		            	fullAddr = data.roadAddress;
 		            	
 		            	// 법정동명
-		            	if(data.bname != '') {
+		            	if(data.bname !== ''){
 		            		extraAddr += data.bname;
 		            	}
 		            	
 		            	// 건물명
-		            	if(data.buildingName != '') {
-		            		extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		            	if(data.buildingName !== ''){
+		            		extraAddr += (extraAddr !== '' ? ', '+data.buildingName : data.buildingName);
 		            	}
 		            	
 		            	fullAddr += extraAddr !== '' ? '('+extraAddr+')' : '';
 		            	
-		            } else {
+		            }else{
 		            	// 지번 주소
 		            	fullAddr = data.jibunAddress;
 		            }
-		            
 		            // 우편번호
 		            postCode = data.zonecode;
-		            // 입력 필드에 값 넣기
-		            $("#u_post").val(postcode);
+		            // 입력필드에 값 넣기
+		            $("#u_post").val(postCode);
 		            $("#u_addr").val(fullAddr);
 		            $("#u_addr_detail").focus();
 		        }
 		    }).open();
 		});
 	</script>
-	
+
 	
 	<script>
 		// 기본 프로필 이미지 경로

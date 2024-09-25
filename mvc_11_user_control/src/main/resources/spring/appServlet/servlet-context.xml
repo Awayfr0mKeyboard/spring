@@ -31,9 +31,27 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.bitc.*.controller" />
+	<context:component-scan base-package="com.bitc.*.service" />
 	
 	<beans:bean id="uploadDir" class="java.lang.String" >
 		<beans:constructor-arg value="C:\\Temp\\upload" />
 	</beans:bean>
+	
+	
+	<!-- MVC 태그 -->
+	<!-- 
+	<beans:bean id="testInterceptor" class="com.bitc.common.interceptor.TestInterceptor" />
+
+	<interceptors>
+		
+		<interceptor>
+			<mapping path="/**" />
+			<exclude-mapping path="/" />
+			<exclude-mapping path="/resources/*" />
+			<beans:ref bean="testInterceptor" />
+		</interceptor>
+	
+	</interceptors>
+	 -->
 	
 </beans:beans>

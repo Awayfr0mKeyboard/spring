@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<!-- classpath:spring/appServlet/interceptor-context.xml -->
+
+	<bean id="checkCookie" class="com.bitc.user.interceptor.CheckCookieInterceptor" />
+
+	<mvc:interceptors>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/user/logout" />
+			<bean class="com.bitc.user.interceptor.LogoutInterceptor" />
+		</mvc:interceptor>
+	
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/user/*" />
+			<ref bean="checkCookie" />
+		</mvc:interceptor>
+	
+		<mvc:interceptor>
+			<mvc:mapping path="/user/login" />
+			<bean class="com.bitc.user.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		
+	</mvc:interceptors>
+
+</beans>
